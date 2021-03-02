@@ -1,0 +1,10 @@
+{
+  "name": "pg-filler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.0",
+    "pg": "^8.5.1"
+  }
+}
