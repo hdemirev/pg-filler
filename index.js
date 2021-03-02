@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 // connects using DATABASE_URL env var
 const pool = new Pool({
-  max: process.env.MAX_POOL_SIZE || 5,
+  max: process.env.MAX_POOL_SIZE || 10,
   connectionString: process.env.DATABASE_URL,
 });
 
@@ -30,7 +30,7 @@ let tasksDone = 0;
 
 const generateTasks = (numTasks) => {
   const dummyData = {};
-  for (var j = 0; j < process.env.JSON_SIZE || 90000; j++) {
+  for (var j = 0; j < process.env.JSON_SIZE || 50000; j++) {
     dummyData[Math.random().toString()] = Math.random().toString();
   }
 
