@@ -60,14 +60,14 @@ const generateTasks = (numTasks) => {
 };
 
 const fillData = async (tasks) => {
-  async.parallelLimit(tasks, process.env.PARALLEL_LIMIT || 40, () => {
+  async.parallelLimit(tasks, process.env.PARALLEL_LIMIT || 10, () => {
     console.log("all done with inserts");
   });
 };
 
 const main = async () => {
   await init();
-  const tasks = generateTasks(process.env.NUM_TASKS || 1000);
+  const tasks = generateTasks(process.env.NUM_TASKS || 5000);
   console.log("generated tasks");
   fillData(tasks);
 };
