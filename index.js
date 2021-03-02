@@ -22,6 +22,8 @@ const init = async () => {
   await pool.query("delete from dummy_data");
 };
 
+let tasksDone = 0;
+
 const generateTasks = (numTasks) => {
   const dummyData = {};
   for (var j = 0; j < 10000; j++) {
@@ -34,6 +36,10 @@ const generateTasks = (numTasks) => {
       pool
         .query("insert into dummy_data(data) values($1)", [dummyData])
         .then(() => {
+          tasksDone++;
+          if (tasksDone % 100 === 0) {
+            console.log("tasks completed: ", tasksDone);
+          }
           done();
         })
         .catch((e) => {
