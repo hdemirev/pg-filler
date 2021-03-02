@@ -32,7 +32,7 @@ let tasksDone = 0;
 
 const generateTasks = (numTasks) => {
   const dummyData = {};
-  for (var j = 0; j < process.env.JSON_SIZE || 25000; j++) {
+  for (var j = 0; j < process.env.JSON_SIZE || 10000; j++) {
     dummyData[Math.random().toString()] = Math.random().toString();
   }
 
@@ -60,7 +60,7 @@ const generateTasks = (numTasks) => {
 };
 
 const fillData = async (tasks) => {
-  async.parallelLimit(tasks, process.env.PARALLEL_LIMIT || 20, () => {
+  async.parallelLimit(tasks, process.env.PARALLEL_LIMIT || 40, () => {
     console.log("all done with inserts");
   });
 };
