@@ -18,8 +18,12 @@ const pool = new Pool({
 });
 
 const init = async () => {
-  await pool.query("create table if not exists dummy_data(data jsonb)");
-  await pool.query("delete from dummy_data");
+  try {
+    await pool.query("create table if not exists dummy_data(data jsonb)");
+    await pool.query("delete from dummy_data");
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 let tasksDone = 0;
