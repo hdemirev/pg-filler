@@ -67,7 +67,8 @@ const fillData = async (tasks) => {
 
 const main = async () => {
   await init();
-  const tasks = generateTasks(process.env.NUM_TASKS || 5000);
+  const tasks = generateTasks(process.env.NUM_TASKS || 1000);
+  console.log("generated tasks");
   fillData(tasks);
 };
 
