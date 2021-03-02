@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 // connects using DATABASE_URL env var
 const pool = new Pool({
-  max: 20,
+  max: process.env.MAX_POOL_SIZE || 5,
   connectionString: process.env.DATABASE_URL,
 });
 
