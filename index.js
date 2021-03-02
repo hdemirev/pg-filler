@@ -35,6 +35,10 @@ const generateTasks = (numTasks) => {
         .query("insert into dummy_data(data) values($1)", [dummyData])
         .then(() => {
           done();
+        })
+        .catch((e) => {
+          console.log(e);
+          done();
         });
     };
     tasks.push(task);
