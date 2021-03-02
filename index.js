@@ -26,7 +26,7 @@ let tasksDone = 0;
 
 const generateTasks = (numTasks) => {
   const dummyData = {};
-  for (var j = 0; j < 10000; j++) {
+  for (var j = 0; j < process.env.JSON_SIZE || 50000; j++) {
     dummyData[Math.random().toString()] = Math.random().toString();
   }
 
