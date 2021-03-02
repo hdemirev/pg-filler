@@ -1,4 +1,5 @@
 const { Pool } = require("pg");
+const async = require("async");
 
 // connects using DATABASE_URL env var
 const pool = new Pool({
