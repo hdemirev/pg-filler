@@ -1,5 +1,15 @@
 const { Pool } = require("pg");
 const async = require("async");
+const express = require("express");
+
+// this is so that I can use this as a render web service
+const app = express();
+app.listen(process.env.PORT || 3000, () => {
+  console.log("app listening");
+});
+app.get("/", (req, res) => {
+  res.send("OK");
+});
 
 // connects using DATABASE_URL env var
 const pool = new Pool({
