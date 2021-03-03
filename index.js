@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 // connects using DATABASE_URL env var
 const pool = new Pool({
-  max: process.env.MAX_POOL_SIZE || 15,
+  max: process.env.MAX_POOL_SIZE || 10,
   connectionString: process.env.DATABASE_URL,
 });
 
@@ -32,8 +32,8 @@ let tasksDone = 0;
 
 const generateTasks = (numTasks) => {
   const dummyData = {};
-  console.log("generating blob with size: ", process.env.JSON_SIZE || 25000);
-  for (var j = 0; j < (process.env.JSON_SIZE || 25000); j++) {
+  console.log("generating blob with size: ", process.env.JSON_SIZE || 20000);
+  for (var j = 0; j < (process.env.JSON_SIZE || 20000); j++) {
     dummyData[Math.random().toString()] = Math.random().toString();
   }
 
@@ -63,7 +63,7 @@ const generateTasks = (numTasks) => {
 };
 
 const fillData = async (tasks) => {
-  async.parallelLimit(tasks, process.env.PARALLEL_LIMIT || 20, () => {
+  async.parallelLimit(tasks, process.env.PARALLEL_LIMIT || 15, () => {
     console.log("all done with inserts");
   });
 };
