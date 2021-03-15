@@ -21,8 +21,13 @@ const init = async () => {
   try {
     await pool.query("create table if not exists dummy_data(data jsonb)");
     console.log("table created");
-    await pool.query("delete from dummy_data");
-    console.log("data deleted");
+
+    if (process.env.DONT_DELETE_EXISTING_TABLE !== "true") {
+      await pool.query("delete from dummy_data");
+      console.log("data deleted");
+    } else {
+      console.log("not deleting data");
+    }
   } catch (e) {
     console.log(e);
   }
