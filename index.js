@@ -74,10 +74,9 @@ const fillData = async (tasks) => {
 };
 
 const main = async () => {
-  await init();
-  const tasks = generateTasks(process.env.NUM_TASKS || 800);
-  console.log("generated tasks");
-  fillData(tasks);
+  setInterval(() => {
+    console.log("hello I am a logline", Math.random());
+  }, 1000);
 };
 
 main();
