@@ -14,7 +14,8 @@ const log = () => {
   console.log("hello I am a logline", Math.random());
   numLogs++;
   if (numLogs % 1000 === 0) console.log("NUM LOGLINES", numLogs);
-  log();
 };
 
-log();
+setInterval(() => {
+  log();
+}, 2);
